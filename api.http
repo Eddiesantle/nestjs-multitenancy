@@ -1,11 +1,30 @@
-GET http://localhost:3000/users
+GET http://localhost:3000/users 
 
-###
+### Usuario Comum
 POST http://localhost:3000/users
 Content-Type: application/json
 
 {
     "name": "John Doe",
-    "email": "test@test.com",
+    "email": "mardos1824@test.com",
+    "password": "123456"
+}
+
+### Usuario Partner
+POST http://localhost:3000/patners/users
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "email": "casa@test.com",
+    "password": "123456"
+}
+
+### Usuario Partner
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email": "casa@test.com",
     "password": "123456"
 }

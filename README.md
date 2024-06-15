@@ -118,3 +118,92 @@ export enum UserRoles{
 }
 
 ```
+
+Criar usuario
+```http
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "email": "test@test.com",
+    "password": "123456"
+}
+```
+
+Implementar hash na senha
+
+```
+npm install bcrypt
+
+npm i --save-dev @types/bcrypt
+```
+
+```javascript
+  generateHash(password: string){
+    return bcrypt.hashSync(password,10)
+  }
+```
+
+Criar usuario, porem esta retornando a senha com hash
+
+```HTTP/1.1 201 Created
+{
+  "id": 11,
+  "name": "John Doe",
+  "email": "mardos182@test.com",
+  "password": "$2b$10$LuVHtaR/orH7i.GR47ol/O6770lnSvVyszFz9PXhbItnqUF6NtoRu",
+  "roles": [
+    "PARTNER"
+  ],
+  "createdAt": "2024-06-15T21:19:43.476Z",
+  "updatedAt": "2024-06-15T21:19:43.476Z"
+}
+```
+
+Para omitir a senha foi criado src/auth/users/user.presenter.ts 
+
+```javascript
+// src/auth/users/user.presenter.ts 
+
+export class UserPresenter {
+    constructor(readonly user: User){}
+
+    toJSON(){
+        return{
+            id: this.user.id,
+            email: this.user.email,
+            roles: this.user.roles,
+            createAt: this.user.createdAt,
+            updateAt: this.user.updatedAt
+        }
+    }
+
+}
+```
+
+```
+nest g controller auth/admin-users
+```
+
+criar rota login
+```
+nest g controller auth
+```
+
+criar serviço autentificação
+```
+nest g service auth
+```
+
+Nest possui base para trabalhar com JWT
+```
+npm install @nestjs/jwt
+```
+
+```POST http://localhost:3000/auth/login
+// HTTP/1.1 201 Created
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsIm5hbWUiOiJKb2huIERvZSIsImVtYWlsIjoiY2FzYUB0ZXN0LmNvbSIsInJvbGVzIjpbIlBBUlRORVIiXSwiY3JlYXRlZEF0IjoiMjAyNC0wNi0xNVQyMTo1ODoyOC45NzZaIiwidXBkYXRlZEF0IjoiMjAyNC0wNi0xNVQyMTo1ODoyOC45NzZaIiwiaWF0IjoxNzE4NDg4OTgxLCJleHAiOjE3MTg0OTg5ODF9.vIMkUTk7cdagDVC55zDMbioszJ8GWTO8URWUGd2CLng"
+}
+```

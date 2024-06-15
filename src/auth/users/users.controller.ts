@@ -1,12 +1,16 @@
-import { Body, Controller, Get } from '@nestjs/common';
-import { CreateUserDto } from './dtos/create-user-dto';
+import { Body, Controller, Post } from '@nestjs/common';
+import { CreatePatnerUserDto } from './dtos/create-patner-user.dto';
+import { UserPresenter } from './user.presenter';
 import { UsersService } from './users.service';
 
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
-  @Get()
-  create(@Body() data: CreateUserDto) {
-    return this.usersService.create(data);
+  
+  @Post()
+  async create(@Body() data: CreatePatnerUserDto) {
+    const user = await this.usersService.createCommonUser(data);
+
+    return new UserPresenter(user)
   }
 }
