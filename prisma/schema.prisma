@@ -48,12 +48,29 @@ model PartnerUser {
 }
 
 model Event {
-  id          Int      @id @default(autoincrement())
+  id          String   @id @default(uuid())
   name        String
   description String
+  price       Float
   date        DateTime
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   partnerId   Int
   Partner     Partner  @relation(fields: [partnerId], references: [id])
+  Spot        Spot[]
+}
+
+model Spot {
+  id        String     @id @default(uuid())
+  name      String
+  status    SpotStatus
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  eventId   String
+  Event     Event      @relation(fields: [eventId], references: [id])
+}
+
+enum SpotStatus {
+  available
+  reserved
 }

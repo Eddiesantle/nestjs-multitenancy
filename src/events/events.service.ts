@@ -16,6 +16,7 @@ export class EventsService {
         name: createEventDto.name,
         description: createEventDto.description,
         date: new Date(createEventDto.date),
+        price: createEventDto.price,
         partnerId: this.tenantService.getTenant().id
       }
     })
@@ -30,15 +31,39 @@ export class EventsService {
     return `This action returns all events`;
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
+    return this.prismaService.event.findUnique({
+      where: {
+        partnerId: this.tenantService.getTenant().id,
+        id
+      }
+    })
     return `This action returns a #${id} event`;
   }
 
-  update(id: number, updateEventDto: UpdateEventDto) {
+  update(id: string, updateEventDto: UpdateEventDto) {
+    return this.prismaService.event.update({
+      data: {
+        name: updateEventDto.name,
+        description: updateEventDto.description,
+        date: new Date(updateEventDto.date),
+        price: updateEventDto.price
+      },
+      where: {
+        partnerId: this.tenantService.getTenant().id,
+        id
+      }
+    })
     return `This action updates a #${id} event`;
   }
 
-  remove(id: number) {
+  remove(id: string) {
+    return this.prismaService.event.delete({
+      where: {
+        partnerId: this.tenantService.getTenant().id,
+        id
+      }
+    })
     return `This action removes a #${id} event`;
   }
 }

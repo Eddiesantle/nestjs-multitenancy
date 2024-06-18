@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards, UseInterceptors } from '@nestjs/common';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { Roles } from 'src/auth/roles/roles.decorator';
 import { RolesGuard } from 'src/auth/roles/roles.guard';
@@ -33,16 +33,17 @@ export class EventsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.eventsService.findOne(+id);
+    return this.eventsService.findOne(id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id') id: string, @Body() updateEventDto: UpdateEventDto) {
-    return this.eventsService.update(+id, updateEventDto);
+    return this.eventsService.update(id, updateEventDto);
   }
 
+  @HttpCode(204)
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.eventsService.remove(+id);
+    return this.eventsService.remove(id);
   }
 }

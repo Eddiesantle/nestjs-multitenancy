@@ -1,6 +1,6 @@
 # Aplicações multi tenancy com Nest.js
 
-## Sistema de Vendas de Ingressos Utilizando Arquitetura de Microsserviços
+## Microsserviços de parceiros de ingressos com Nest.js
 
 Este projeto implementa um sistema de vendas de ingressos utilizando uma arquitetura de microsserviços com NestJS. A aplicação segue as melhores práticas de desenvolvimento para gerenciar e organizar vendas, gerar ingressos e lidar com a disputa de ingressos entre clientes.
 
@@ -13,38 +13,17 @@ Este projeto implementa um sistema de vendas de ingressos utilizando uma arquite
 ## Estrutura do Projeto
 O projeto está estruturado seguindo o padrão MVC (Model-View-Controller) e utiliza injeção de dependência para gerenciamento de serviços. A arquitetura de microsserviços permite a escalabilidade e manutenibilidade do sistema.
 
-```
-src/
-│
-├── auth/
-│   ├── auth.controller.ts
-│   ├── auth.module.ts
-│   ├── auth.service.ts
-│   ├── users/
-│   │   ├── users.controller.ts
-│   │   ├── users.service.ts
-│   │   ├── user-roles.ts
-│   │   └── dtos/
-│   │       └── create-user-dto.ts
-│   └── admin-users/
-│       └── admin-users.controller.ts
-│
-├── prisma/
-│   ├── prisma.module.ts
-│   ├── prisma.service.ts
-│
-└── tenant/
-    ├── tenant.module.ts
-    ├── tenant.service.ts
-    └── tenant.interceptor.ts
 
-```
 
-## Pré-requisitos
-- Node.js
+## Tecnologias utilizadas
+- TypeScript/Javascript
+- Nest.js
+- Prisma ORM
+- Rest
+- Autentificação
 - Docker
 - MySQL
-- Prisma
+
 
 ## Instalação
 

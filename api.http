@@ -20,19 +20,19 @@ Content-Type: application/json
     "password": "123456"
 }
 
-### Usuario Partner
+### Login Usuario
 POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "marta@test.com",
+    "email": "nanda@test.com",
     "password": "123456"
 }
 
 ### create Partner
 POST http://localhost:3000/partners
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiOiJKb2huIERvZSIsImVtYWlsIjoibmFuZGFAdGVzdC5jb20iLCJyb2xlcyI6WyJQQVJUTkVSIl0sImNyZWF0ZWRBdCI6IjIwMjQtMDYtMTZUMDA6NDU6MzIuMTgxWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDYtMTZUMDA6NDU6MzIuMTgxWiIsImlhdCI6MTcxODQ5ODc1NSwiZXhwIjoxNzE4NTA4NzU1fQ.X4prgOS8N8WJbEoJnwIOfxZxg4mo0FFDkwa54QgiyXc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJuYW5kYUB0ZXN0LmNvbSIsInJvbGVzIjpbIlBBUlRORVIiXSwiY3JlYXRlZEF0IjoiMjAyNC0wNi0xOFQwMDozMzoxMi4xNjJaIiwidXBkYXRlZEF0IjoiMjAyNC0wNi0xOFQwMDozMzoxMi4xNjJaIiwiaWF0IjoxNzE4NjcwODE3LCJleHAiOjE3MTg2ODA4MTd9.G5_O67S2swij4h9cb5fyh86-R4S-39lBgLclcm_5Smg
 
 {
     "name": "nanda ltda"
@@ -40,23 +40,67 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiO
 
 ### list Partner
 GET http://localhost:3000/partners
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiOiJKb2huIERvZSIsImVtYWlsIjoibmFuZGFAdGVzdC5jb20iLCJyb2xlcyI6WyJQQVJUTkVSIl0sImNyZWF0ZWRBdCI6IjIwMjQtMDYtMTZUMDA6NDU6MzIuMTgxWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDYtMTZUMDA6NDU6MzIuMTgxWiIsImlhdCI6MTcxODQ5ODc1NSwiZXhwIjoxNzE4NTA4NzU1fQ.X4prgOS8N8WJbEoJnwIOfxZxg4mo0FFDkwa54QgiyXc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJuYW5kYUB0ZXN0LmNvbSIsInJvbGVzIjpbIlBBUlRORVIiXSwiY3JlYXRlZEF0IjoiMjAyNC0wNi0xOFQwMDozMzoxMi4xNjJaIiwidXBkYXRlZEF0IjoiMjAyNC0wNi0xOFQwMDozMzoxMi4xNjJaIiwiaWF0IjoxNzE4NjcwODE3LCJleHAiOjE3MTg2ODA4MTd9.G5_O67S2swij4h9cb5fyh86-R4S-39lBgLclcm_5Smg
 
 
 ### Cadastrar Evento
+# @name createEvent
 POST http://localhost:3000/events
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJtYXJ0YUB0ZXN0LmNvbSIsInJvbGVzIjpbIlVTRVIiXSwiY3JlYXRlZEF0IjoiMjAyNC0wNi0xNVQyMTowOToxMy42ODFaIiwidXBkYXRlZEF0IjoiMjAyNC0wNi0xNVQyMTowOToxMy42ODFaIiwiaWF0IjoxNzE4NTAwMzQzLCJleHAiOjE3MTg1MTAzNDN9.DKORwF9coELRGX_0f7i5B5_p-jEF9dEkeETnQzrMUrY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJuYW5kYUB0ZXN0LmNvbSIsInJvbGVzIjpbIlBBUlRORVIiXSwiY3JlYXRlZEF0IjoiMjAyNC0wNi0xOFQwMDozMzoxMi4xNjJaIiwidXBkYXRlZEF0IjoiMjAyNC0wNi0xOFQwMDozMzoxMi4xNjJaIiwiaWF0IjoxNzE4NjcwODE3LCJleHAiOjE3MTg2ODA4MTd9.G5_O67S2swij4h9cb5fyh86-R4S-39lBgLclcm_5Smg
 
 {
-    "name": "Evento da nanda - 8",
-    "description": "Evento da nanda - 8",
+    "name": "Evento da nanda - 78",
+    "description": "Evento da nanda - 78",
     "date": "2024-06-15T23:21:34.60",
+    "price": 150.2,
     "location": "Rua 1, 123",
     "partnerId": 1
 }
 
-### Listar Evento
+
+### // Recebe id evento após criado
+
+@eventId = {{ createEvent.response.body.id }}
+
+
+### Listar All Evento
 GET http://localhost:3000/events
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJtYXJ0YUB0ZXN0LmNvbSIsInJvbGVzIjpbIlVTRVIiXSwiY3JlYXRlZEF0IjoiMjAyNC0wNi0xNVQyMTowOToxMy42ODFaIiwidXBkYXRlZEF0IjoiMjAyNC0wNi0xNVQyMTowOToxMy42ODFaIiwiaWF0IjoxNzE4NTAwMzQzLCJleHAiOjE3MTg1MTAzNDN9.DKORwF9coELRGX_0f7i5B5_p-jEF9dEkeETnQzrMUrY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJuYW5kYUB0ZXN0LmNvbSIsInJvbGVzIjpbIlBBUlRORVIiXSwiY3JlYXRlZEF0IjoiMjAyNC0wNi0xOFQwMDozMzoxMi4xNjJaIiwidXBkYXRlZEF0IjoiMjAyNC0wNi0xOFQwMDozMzoxMi4xNjJaIiwiaWF0IjoxNzE4NjcwODE3LCJleHAiOjE3MTg2ODA4MTd9.G5_O67S2swij4h9cb5fyh86-R4S-39lBgLclcm_5Smg
+
+### Buscar Evento
+GET http://localhost:3000/events/{{ eventId }}
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJuYW5kYUB0ZXN0LmNvbSIsInJvbGVzIjpbIlBBUlRORVIiXSwiY3JlYXRlZEF0IjoiMjAyNC0wNi0xOFQwMDozMzoxMi4xNjJaIiwidXBkYXRlZEF0IjoiMjAyNC0wNi0xOFQwMDozMzoxMi4xNjJaIiwiaWF0IjoxNzE4NjcwODE3LCJleHAiOjE3MTg2ODA4MTd9.G5_O67S2swij4h9cb5fyh86-R4S-39lBgLclcm_5Smg
+
+### Editar Evento
+PUT http://localhost:3000/events/{{ eventId }}
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJuYW5kYUB0ZXN0LmNvbSIsInJvbGVzIjpbIlBBUlRORVIiXSwiY3JlYXRlZEF0IjoiMjAyNC0wNi0xOFQwMDozMzoxMi4xNjJaIiwidXBkYXRlZEF0IjoiMjAyNC0wNi0xOFQwMDozMzoxMi4xNjJaIiwiaWF0IjoxNzE4NjcwODE3LCJleHAiOjE3MTg2ODA4MTd9.G5_O67S2swij4h9cb5fyh86-R4S-39lBgLclcm_5Smg
+
+{
+    "name": "Evento da nanda - 66",
+    "description": "Evento da nanda - 66",
+    "date": "2024-06-15T00:00:00",
+    "price": 150.2,
+    "location": "Rua 1, 123",
+    "partnerId": 1
+}
+
+### Remover Evento
+DELETE http://localhost:3000/events/{{ eventId }}
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJuYW5kYUB0ZXN0LmNvbSIsInJvbGVzIjpbIlBBUlRORVIiXSwiY3JlYXRlZEF0IjoiMjAyNC0wNi0xOFQwMDozMzoxMi4xNjJaIiwidXBkYXRlZEF0IjoiMjAyNC0wNi0xOFQwMDozMzoxMi4xNjJaIiwiaWF0IjoxNzE4NjcwODE3LCJleHAiOjE3MTg2ODA4MTd9.G5_O67S2swij4h9cb5fyh86-R4S-39lBgLclcm_5Smg
+
+### Listar All spots do Evento
+GET http://localhost:3000/events/{{ eventId }}/spots
+
+### Criar spots do Evento
+# @name createSpot
+POST http://localhost:3000/events/{{ eventId }}/spots
+Content-Type: application/json
+
+{
+    "name": "A1"
+}
