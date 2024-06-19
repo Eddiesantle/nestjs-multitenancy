@@ -355,6 +355,21 @@ nest g library
 ```
 
 nome: core
+importar pastas (spots,events,prisma)
+
+```
+nest g app partner1
+nest g app partner2
+nest g app partner3
+```
+
+```
+npm install @nestjs/congif
+```
+
+```
+npm install dotenv-cli
+```
 
 ## Acessando com: Dev Container
 

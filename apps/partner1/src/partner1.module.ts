@@ -1,10 +1,8 @@
+import { EventsCoreModule, SpotsCoreModule } from '@app/core';
 import { Module } from '@nestjs/common';
-import { Partner1Controller } from './partner1.controller';
-import { Partner1Service } from './partner1.service';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [],
-  controllers: [Partner1Controller],
-  providers: [Partner1Service],
+  imports: [ConfigModule.forRoot({ envFilePath: '.env.partner1' }), SpotsCoreModule, EventsCoreModule]
 })
-export class Partner1Module {}
+export class Partner1Module { }
