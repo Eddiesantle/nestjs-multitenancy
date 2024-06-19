@@ -5,6 +5,7 @@ import { RolesGuard } from 'src/auth/roles/roles.guard';
 import { UserRoles } from 'src/auth/users/user-roles';
 import { TenantInterceptor } from 'src/tenant/tenant.interceptor';
 import { CreateEventDto } from './dto/create-event.dto';
+import { ReserveSpotDto } from './dto/reserve-spot.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
 import { EventsService } from './events.service';
 
@@ -45,5 +46,10 @@ export class EventsController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.eventsService.remove(id);
+  }
+
+  @Post(':id/reserve')
+  reserveSpots(@Body() dto: ReserveSpotDto, @Param('id') eventId: string) {
+    return this.eventsService.reserveSpot({ ...dto, eventId })
   }
 }
