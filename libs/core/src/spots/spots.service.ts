@@ -1,6 +1,7 @@
-import { PrismaService } from '@app/core/prisma/prisma.service';
+
 import { Injectable } from '@nestjs/common';
 import { SpotStatus } from '@prisma/client';
+import { PrismaService } from '../prisma/prisma.service';
 import { CreateSpotDto } from './dto/create-spot.dto';
 import { UpdateSpotDto } from './dto/update-spot.dto';
 
@@ -27,7 +28,7 @@ export class SpotsService {
         status: SpotStatus.available
       }
     })
-    return 'This action adds a new spot';
+
   }
 
   findAll(eventId: string) {
@@ -36,7 +37,7 @@ export class SpotsService {
         eventId,
       }
     })
-    return `This action returns all spots`;
+
   }
 
   findOne(eventId: string, spotId: string) {
@@ -46,7 +47,7 @@ export class SpotsService {
         eventId,
       }
     })
-    return `This action returns a #${spotId} spot`;
+
   }
 
   update(eventId: string, spotId: string, updateSpotDto: UpdateSpotDto) {
@@ -57,7 +58,7 @@ export class SpotsService {
       },
       data: updateSpotDto
     })
-    return `This action updates a #${spotId} spot`;
+
   }
 
   remove(eventId: string, spotId: string,) {

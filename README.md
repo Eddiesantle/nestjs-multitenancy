@@ -364,7 +364,7 @@ nest g app partner3
 ```
 
 ```
-npm install @nestjs/congif
+npm install @nestjs/config
 ```
 
 ```

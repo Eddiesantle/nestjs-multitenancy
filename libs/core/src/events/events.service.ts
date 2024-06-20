@@ -1,12 +1,14 @@
-import { PrismaService } from '@app/core/prisma/prisma.service';
-import { TenantService } from '@app/core/tenant/tenant.service';
-import { Injectable } from '@nestjs/common';
+
+import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { Prisma, SpotStatus, TicketStatus } from '@prisma/client';
+import { PrismaService } from '../prisma/prisma.service';
+import { TenantService } from '../tenant/tenant.service';
 import { CreateEventDto } from './dto/create-event.dto';
 import { ReserveSpotDto } from './dto/reserve-spot.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
 
 @Injectable()
+
 export class EventsService {
 
   constructor(private prismaService: PrismaService, private tenantService: TenantService) { }
@@ -30,7 +32,7 @@ export class EventsService {
         partnerId: this.tenantService.getTenant().id
       }
     })
-    return `This action returns all events`;
+
   }
 
   findOne(id: string) {
@@ -40,7 +42,7 @@ export class EventsService {
         id
       }
     })
-    return `This action returns a #${id} event`;
+
   }
 
   update(id: string, updateEventDto: UpdateEventDto) {
@@ -56,7 +58,7 @@ export class EventsService {
         id
       }
     })
-    return `This action updates a #${id} event`;
+
   }
 
   remove(id: string) {
@@ -66,7 +68,7 @@ export class EventsService {
         id
       }
     })
-    return `This action removes a #${id} event`;
+
   }
 
   async reserveSpot(dto: ReserveSpotDto & { eventId: string }) {
@@ -129,11 +131,16 @@ export class EventsService {
       if (e instanceof Prisma.PrismaClientKnownRequestError) {
         switch (e.code) {
           case 'P2002': // unique constraint violation
+            throw new BadRequestException({ message: 'Some spots are already reserved' });
           case 'P2034': // transection conflict
-            throw new Error('Some spots are aready reserved')
+            throw new BadRequestException({ message: 'Transaction conflict occurred' });
+          default:
+            throw new InternalServerErrorException({ message: 'Database error occurred' });
         }
 
-        throw e
+
+      } else {
+        throw new InternalServerErrorException({ message: 'Unknown error occurred' });
       }
     }
 

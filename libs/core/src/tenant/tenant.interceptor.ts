@@ -1,6 +1,7 @@
-import { PrismaService } from '@app/core/prisma/prisma.service';
+
 import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from '@nestjs/common';
 import { Observable } from 'rxjs';
+import { PrismaService } from '../prisma/prisma.service';
 import { TenantService } from './tenant.service';
 
 @Injectable()

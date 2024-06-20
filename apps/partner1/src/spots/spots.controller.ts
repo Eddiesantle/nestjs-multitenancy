@@ -1,4 +1,6 @@
-import { SpotsService } from '@app/core/spots/spots.service';
+
+
+import { SpotsService } from '@app/core';
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { CreateSpotRequest } from './request/create-spot.request';
 import { UpdateSpotRequest } from './request/update-spot.request';
@@ -8,6 +10,7 @@ export class SpotsController {
   constructor(private readonly spotsService: SpotsService) { }
 
   @Post()
+  // @UsePipes(SpotsValidationPipe)
   create(@Body() createSpotRequest: CreateSpotRequest, @Param('eventId') eventId: string) {
     return this.spotsService.create({ ...createSpotRequest, eventId });
   }

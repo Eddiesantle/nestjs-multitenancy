@@ -1,6 +1,9 @@
-import { PrismaService } from '@app/core/prisma/prisma.service';
+
+
+
 import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
+import { PrismaService } from '../../prisma/prisma.service';
 import { CreateCommonUserDto } from './dtos/create-common-user.dto';
 import { CreatePartnerUserDto } from './dtos/create-partner-user.dto';
 import { UserRoles } from './user-roles';

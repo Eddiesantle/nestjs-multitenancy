@@ -1,10 +1,11 @@
+
+import { EventsService, TenantInterceptor } from '@app/core';
 import { AuthGuard } from '@app/core/auth/auth.guard';
 import { Roles } from '@app/core/auth/roles/roles.decorator';
 import { RolesGuard } from '@app/core/auth/roles/roles.guard';
-import { UserRoles } from '@app/core/auth/users/user-roles';
-import { EventsService } from '@app/core/events/events.service';
-import { TenantInterceptor } from '@app/core/tenant/tenant.interceptor';
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards, UseInterceptors, UsePipes } from '@nestjs/common';
+import { UserRoles } from '../auth/users/user-roles';
+import { EventsCreateValidationPipe } from './events-create-validation.pipe';
 import { CreateEventRequest } from './request/create-event.request';
 import { ReserveSpotRequest } from './request/reserve-spot.request';
 import { UpdateEventRequest } from './request/update-event.request';
@@ -21,6 +22,7 @@ export class EventsController {
 
   @Roles(UserRoles.PARTNER)
   @Post()
+  @UsePipes(EventsCreateValidationPipe)
   create(@Body() createEventRequest: CreateEventRequest) {
 
     return this.eventsService.create(createEventRequest);
@@ -49,6 +51,7 @@ export class EventsController {
   }
 
   @Post(':id/reserve')
+  // @UsePipes(EventsReserveValidationPipe)
   reserveSpots(@Body() reserveRequest: ReserveSpotRequest, @Param('id') eventId: string) {
     return this.eventsService.reserveSpot({ ...reserveRequest, eventId })
   }
