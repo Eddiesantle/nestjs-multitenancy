@@ -34,31 +34,37 @@ git https://github.com/Eddiesantle/nestjs-multitenancy.git
 cd nestjs-multitenancy
 ```
 
-2. Instale as dependências:
-
-```bash
-npm install
-```
-
-3. Configure o Prisma:
-
-```bash
-npx prisma init
-```
-
-4. Suba o container do banco de dados MySQL:
+2. Suba o container do banco de dados MySQL e APP:
 
 ```bash
 docker-compose up -d
 ```
 
-5. Execute as migrações do Prisma:
+3. Execute as migrações do partner1 e partner2:
 
 ```bash
-npx prisma migrate dev
+npm run migrate:partner1
 ```
 
-## Processos e Configuração do Projeto
+```bash
+npm run migrate:partner2
+```
+
+3. Para executar aplicação partner1 - roda na porta 3000:
+
+```bash
+npm run start:partner1
+```
+
+4. Para executar aplicação partner2 - roda na porta 3001:
+
+```bash
+npm run start:partner1
+```
+
+
+
+## Processos realizado para Configuração do Projeto
 
 1. Autenticação:
    Gere os módulos, controladores e serviços para autenticação:
@@ -375,9 +381,9 @@ npm install dotenv-cli
 
 Buscar Ctrl + p:
 
-- > Dev Conteiner: Open Folder in Container...
-  > Selecionar o local do arquivo
-  > Container Configuration:
+- -> Dev Conteiner: Open Folder in Container...
+- Selecionar o local do arquivo
+- Container Configuration:
 - From 'docker-compose.yaml'
   Seleciona serviço principal:
 - ->app
