@@ -37,7 +37,7 @@ cd nestjs-multitenancy
 2. Suba o container do banco de dados MySQL e APP:
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 3. Execute as migrações do partner1 e partner2:
@@ -56,7 +56,7 @@ npm run migrate:partner2
 npm run start:partner1
 ```
 
-4. Para executar aplicação partner2 - roda na porta 3001:
+4. Para executar aplicação partner2 - roda na porta 3000:
 
 ```bash
 npm run start:partner1

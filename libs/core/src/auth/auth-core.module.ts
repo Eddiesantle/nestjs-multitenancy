@@ -3,6 +3,10 @@ import { JwtModule } from '@nestjs/jwt';
 import { PrismaCoreModule } from '../prisma/prisma-core.module';
 import { AuthService } from './auth.service';
 import { UsersService } from './users/users.service';
+// Configuração do dotenv para carregar as variáveis de ambiente
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 
 @Module({
   imports: [

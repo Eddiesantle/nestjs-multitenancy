@@ -2,13 +2,13 @@
 import { ArgumentMetadata, BadRequestException, Injectable, PipeTransform } from '@nestjs/common';
 import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
-import { CreateEventRequest } from './request/create-event.request';
+import { UpdateEventRequest } from './request/update-event.request';
 
 
 @Injectable()
-export class EventsCreateValidationPipe implements PipeTransform {
-    async transform(value: CreateEventRequest, metadata: ArgumentMetadata) {
-        const object = plainToClass(CreateEventRequest, value);
+export class EventsUptadeValidationPipe implements PipeTransform {
+    async transform(value: UpdateEventRequest, metadata: ArgumentMetadata) {
+        const object = plainToClass(UpdateEventRequest, value);
 
         const errors = await validate(object);
 

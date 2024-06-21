@@ -1,6 +1,22 @@
+import { IsISO8601, IsNotEmpty, IsNumber, IsString, MaxLength, Min } from "class-validator";
+
 export class CreateEventRequest {
-    name: string
-    description: string
-    date: string
-    price: number
+    @IsNotEmpty()
+    @IsString()
+    @MaxLength(255)
+    name: string;
+
+    @IsNotEmpty()
+    @IsString()
+    @MaxLength(255)
+    description: string;
+
+    @IsNotEmpty()
+    @IsISO8601()
+    date: string;
+
+    @IsNotEmpty()
+    @IsNumber()
+    @Min(0)
+    price: number;
 }

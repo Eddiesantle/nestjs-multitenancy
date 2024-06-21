@@ -1,24 +1,31 @@
-
+// src/events/pipes/events-create-validation.pipe.ts
 import { ArgumentMetadata, BadRequestException, Injectable, PipeTransform } from '@nestjs/common';
+import { plainToClass } from 'class-transformer';
+import { validate } from 'class-validator';
 import { ReserveSpotRequest } from './request/reserve-spot.request';
+
 
 @Injectable()
 export class EventsReserveValidationPipe implements PipeTransform {
-    transform(value: ReserveSpotRequest, metadata: ArgumentMetadata) {
-        this.validate(value);
-        return value;
-    }
+    async transform(value: ReserveSpotRequest, metadata: ArgumentMetadata) {
+        const object = plainToClass(ReserveSpotRequest, value);
 
-    private validate(value: any) {
+        const errors = await validate(object);
 
-        if (!value.spots || !Array.isArray(value.spots) || value.spots.length === 0) {
-            throw new BadRequestException('Spots must be a non-empty array of strings.');
+        if (errors.length > 0) {
+            const errorMessage = this.buildErrorMessage(errors);
+            throw new BadRequestException(errorMessage);
         }
 
-        if (!value.ticket_kind || (value.ticket_kind !== 'full' && value.ticket_kind !== 'half')) {
-            throw new BadRequestException('Ticket kind must be either "full" or "half".');
-        }
+        return object;
     }
 
+    private buildErrorMessage(errors: any[]): string {
+        const messages = errors.map(error => {
+            const constraints = Object.values(error.constraints);
+            return constraints.join('; ');
+        });
 
+        return messages.join('; ');
+    }
 }

@@ -3,9 +3,11 @@ import { EventsService, TenantInterceptor } from '@app/core';
 import { AuthGuard } from '@app/core/auth/auth.guard';
 import { Roles } from '@app/core/auth/roles/roles.decorator';
 import { RolesGuard } from '@app/core/auth/roles/roles.guard';
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards, UseInterceptors, UsePipes } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards, UseInterceptors } from '@nestjs/common';
 import { UserRoles } from '../auth/users/user-roles';
 import { EventsCreateValidationPipe } from './events-create-validation.pipe';
+import { EventsReserveValidationPipe } from './events-reserve-validation.pipe';
+import { EventsUptadeValidationPipe } from './events-update-validation.pipe';
 import { CreateEventRequest } from './request/create-event.request';
 import { ReserveSpotRequest } from './request/reserve-spot.request';
 import { UpdateEventRequest } from './request/update-event.request';
@@ -22,8 +24,7 @@ export class EventsController {
 
   @Roles(UserRoles.PARTNER)
   @Post()
-  @UsePipes(EventsCreateValidationPipe)
-  create(@Body() createEventRequest: CreateEventRequest) {
+  create(@Body(new EventsCreateValidationPipe()) createEventRequest: CreateEventRequest) {
 
     return this.eventsService.create(createEventRequest);
   }
@@ -40,7 +41,7 @@ export class EventsController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateEventRequest: UpdateEventRequest) {
+  update(@Param('id') id: string, @Body(new EventsUptadeValidationPipe()) updateEventRequest: UpdateEventRequest) {
     return this.eventsService.update(id, updateEventRequest);
   }
 
@@ -51,8 +52,7 @@ export class EventsController {
   }
 
   @Post(':id/reserve')
-  // @UsePipes(EventsReserveValidationPipe)
-  reserveSpots(@Body() reserveRequest: ReserveSpotRequest, @Param('id') eventId: string) {
+  reserveSpots(@Body(new EventsReserveValidationPipe()) reserveRequest: ReserveSpotRequest, @Param('id') eventId: string) {
     return this.eventsService.reserveSpot({ ...reserveRequest, eventId })
   }
 }
