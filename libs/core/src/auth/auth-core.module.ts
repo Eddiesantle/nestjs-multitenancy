@@ -4,16 +4,21 @@ import { PrismaCoreModule } from '../prisma/prisma-core.module';
 import { AuthService } from './auth.service';
 import { UsersService } from './users/users.service';
 // Configuração do dotenv para carregar as variáveis de ambiente
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
 
 @Module({
   imports: [
-    JwtModule.register({
+    JwtModule.registerAsync({
       global: true,
-      secret: process.env.SECRET_KEY,
-      signOptions: { expiresIn: process.env.SECRET_KEY_EXPIRES_IN }
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        secret: configService.get<string>('SECRET_KEY'),
+        signOptions: { expiresIn: configService.get<string>('SECRET_KEY_EXPIRES_IN') },
+      }),
+      inject: [ConfigService],
     }),
     AuthCoreModule,
     PrismaCoreModule
