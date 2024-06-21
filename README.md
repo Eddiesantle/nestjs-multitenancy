@@ -30,7 +30,7 @@ O projeto está estruturado seguindo o padrão MVC (Model-View-Controller) e uti
 1. Clone o repositório:
 
 ```bash
-git https://github.com/Eddiesantle/nestjs-multitenancy.git
+git clone https://github.com/Eddiesantle/nestjs-multitenancy.git
 cd nestjs-multitenancy
 ```
 
@@ -40,7 +40,13 @@ cd nestjs-multitenancy
 docker compose up -d
 ```
 
-3. Execute as migrações do partner1 e partner2:
+3. Execute o container da aplicação 'app' interagir diretamente com o ambiente interno de um contêiner:
+
+```bash
+docker compose exec app bash
+```
+
+4. Execute as migrações do partner1 e partner2:
 
 ```bash
 npm run migrate:partner1
@@ -50,16 +56,16 @@ npm run migrate:partner1
 npm run migrate:partner2
 ```
 
-3. Para executar aplicação partner1 - roda na porta 3000:
+5. Para executar aplicação partner1 - roda na porta 3000:
 
 ```bash
 npm run start:partner1
 ```
 
-4. Para executar aplicação partner2 - roda na porta 3000:
+6. Para executar aplicação partner2 - roda na porta 3000:
 
 ```bash
-npm run start:partner1
+npm run start:partner2
 ```
 
 

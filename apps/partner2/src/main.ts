@@ -4,7 +4,7 @@ import { Partner2Module } from './partner2.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(Partner2Module);
-  const port = 3000;
+  const port = 3001;
 
   await app.listen(port, () => {
     const address = app.getHttpServer().address();
