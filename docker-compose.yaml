@@ -1,31 +1,22 @@
-version: '3.8'
-
 services:
 
-  app:
+  app-nestjs:
     build: .
     ports:
       - 3000:3000
+      - 3001:3001
     volumes:
       - .:/home/node/app
     depends_on:
-      - db
-    networks:
-      - app-network
+      - db-mysql
 
-  db:
+  db-mysql:
     image: mysql:8.0.30-debian
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: partner1
-    ports:
-      - 3306:3306
-      #volumes:
+      #MYSQL_DATABASE: partner1
+      # ports:
+      #   - 3306:3306
+    volumes:
       #  - ./.docker/dbdata:/var/lib/mysql                #Para persistir os dados do banco de dados.
-      #  - ./.docker/mysql:/docker-entrypoint-initdb.d    #Para scripts de inicialização do banco de dados.
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
+      - ./.docker/mysql:/docker-entrypoint-initdb.d #Para scripts de inicialização do banco de dados.
