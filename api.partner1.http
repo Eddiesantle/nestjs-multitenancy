@@ -1,16 +1,19 @@
+### Get Event by ID with Variable
+@baseUrl = http://localhost:3000
+
 ### Cadastro de Usuário Comum
-POST http://localhost:3000/users
+POST {{baseUrl}}/users
 Content-Type: application/json
 
 
 {
     "name": "John Doe",
-    "email": "sofia@test.com",
+    "email": "sofia@test1.com",
     "password": "123456"
 }
 
 ### Cadastro de Usuário Partner:
-POST http://localhost:3000/patners/users
+POST {{baseUrl}}/patners/users
 Content-Type: application/json
 
 
@@ -21,39 +24,39 @@ Content-Type: application/json
 }
 
 ### Login de Usuário:
-POST http://localhost:3000/auth/login
+POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
-    "email": "sada@test.com",
+    "email": "admin-partner1@admin.com",
     "password": "123456"
 }
 
 ### Criação de Partner:
-POST http://localhost:3000/partners
+POST {{baseUrl}}/partners
 Content-Type: application/json
 x-api-token: 777
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJzb2ZpYSBEb2UiLCJlbWFpbCI6InNhZGFAdGVzdC5jb20iLCJyb2xlcyI6WyJQQVJUTkVSIl0sImNyZWF0ZWRBdCI6IjIwMjQtMDYtMjFUMjM6NDI6MjMuNTYxWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDYtMjFUMjM6NDI6MjMuNTYxWiIsImlhdCI6MTcxOTAxMzM5NSwiZXhwIjoxNzE5MDIzMzk1fQ.pESofgheL_hSyEjg-ypy50MpXcjX4z4ZIHzX1MKZJyM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW4tcGFydG5lcjFAYWRtaW4uY29tIiwicm9sZXMiOlsiUEFSVE5FUiJdLCJjcmVhdGVkQXQiOiIyMDI0LTA3LTEzVDE4OjM4OjIwLjU0N1oiLCJ1cGRhdGVkQXQiOiIyMDI0LTA3LTEzVDE4OjM4OjIwLjU0N1oiLCJpYXQiOjE3MjA4OTU5NDMsImV4cCI6MTcyMDkwNTk0M30.q8qZTwzcScyiKuQfB0CevAfkEB7G-Gu8NbEDIgz8CXw
 
 {
     "name": "nanda LTDA"
 }
 
 ### Listagem de Partners:
-GET http://localhost:3000/partners
+GET {{baseUrl}}/partners
 x-api-token: 777
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJzb2ZpYSBEb2UiLCJlbWFpbCI6InNhZGFAdGVzdC5jb20iLCJyb2xlcyI6WyJQQVJUTkVSIl0sImNyZWF0ZWRBdCI6IjIwMjQtMDYtMjFUMjM6NDI6MjMuNTYxWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDYtMjFUMjM6NDI6MjMuNTYxWiIsImlhdCI6MTcxOTAxMzM5NSwiZXhwIjoxNzE5MDIzMzk1fQ.pESofgheL_hSyEjg-ypy50MpXcjX4z4ZIHzX1MKZJyM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW4tcGFydG5lcjFAYWRtaW4uY29tIiwicm9sZXMiOlsiUEFSVE5FUiJdLCJjcmVhdGVkQXQiOiIyMDI0LTA3LTEzVDE4OjM4OjIwLjU0N1oiLCJ1cGRhdGVkQXQiOiIyMDI0LTA3LTEzVDE4OjM4OjIwLjU0N1oiLCJpYXQiOjE3MjA4OTU5NDMsImV4cCI6MTcyMDkwNTk0M30.q8qZTwzcScyiKuQfB0CevAfkEB7G-Gu8NbEDIgz8CXw
 
 
 ### Criação de Evento:
 # @name createEvent
-POST http://localhost:3000/events
+POST {{baseUrl}}/events
 Content-Type: application/json
 x-api-token: 777
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJzb2ZpYSBEb2UiLCJlbWFpbCI6InNhZGFAdGVzdC5jb20iLCJyb2xlcyI6WyJQQVJUTkVSIl0sImNyZWF0ZWRBdCI6IjIwMjQtMDYtMjFUMjM6NDI6MjMuNTYxWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDYtMjFUMjM6NDI6MjMuNTYxWiIsImlhdCI6MTcxOTAxMzM5NSwiZXhwIjoxNzE5MDIzMzk1fQ.pESofgheL_hSyEjg-ypy50MpXcjX4z4ZIHzX1MKZJyM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW4tcGFydG5lcjFAYWRtaW4uY29tIiwicm9sZXMiOlsiUEFSVE5FUiJdLCJjcmVhdGVkQXQiOiIyMDI0LTA3LTEzVDE4OjM4OjIwLjU0N1oiLCJ1cGRhdGVkQXQiOiIyMDI0LTA3LTEzVDE4OjM4OjIwLjU0N1oiLCJpYXQiOjE3MjA4OTU5NDMsImV4cCI6MTcyMDkwNTk0M30.q8qZTwzcScyiKuQfB0CevAfkEB7G-Gu8NbEDIgz8CXw
 
 {
-    "name": "Evento da nanda - 78 Eve nanda - 7",
+    "name": "Evento da nanda - 88 Eve nanda - 7",
     "description": "Evento da nanda - 78",
     "date": "2024-07-15T10:00:00Z",
     "price": 150.2,
@@ -68,22 +71,22 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiO
 
 
 ### Listagem de Todos os Eventos
-GET http://localhost:3000/events
+GET {{baseUrl}}/events
 Content-Type: application/json
 x-api-token: 777
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJtYXJ0YUB0ZXN0LmNvbSIsInJvbGVzIjpbIlBBUlRORVIiXSwiY3JlYXRlZEF0IjoiMjAyNC0wNi0yMVQyMzoyMDo1Ni4wMjdaIiwidXBkYXRlZEF0IjoiMjAyNC0wNi0yMVQyMzoyMDo1Ni4wMjdaIiwiaWF0IjoxNzE5MDEyMjM1LCJleHAiOjE3MTkwMjIyMzV9.WIOBzegtum_o7dfn-Vuc_2wHto6U5cEpAoMtZ176aBU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW4tcGFydG5lcjFAYWRtaW4uY29tIiwicm9sZXMiOlsiUEFSVE5FUiJdLCJjcmVhdGVkQXQiOiIyMDI0LTA3LTEzVDE4OjM4OjIwLjU0N1oiLCJ1cGRhdGVkQXQiOiIyMDI0LTA3LTEzVDE4OjM4OjIwLjU0N1oiLCJpYXQiOjE3MjA4OTU5NDMsImV4cCI6MTcyMDkwNTk0M30.q8qZTwzcScyiKuQfB0CevAfkEB7G-Gu8NbEDIgz8CXw
 
 ### Buscar um Evento Específico:
-GET http://localhost:3000/events/{{ eventId }}
+GET {{baseUrl}}/events/{{ eventId }}
 Content-Type: application/json
 x-api-token: 777
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJzb2ZpYSBEb2UiLCJlbWFpbCI6InNhZGFAdGVzdC5jb20iLCJyb2xlcyI6WyJQQVJUTkVSIl0sImNyZWF0ZWRBdCI6IjIwMjQtMDYtMjFUMjM6NDI6MjMuNTYxWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDYtMjFUMjM6NDI6MjMuNTYxWiIsImlhdCI6MTcxOTAxMzM5NSwiZXhwIjoxNzE5MDIzMzk1fQ.pESofgheL_hSyEjg-ypy50MpXcjX4z4ZIHzX1MKZJyM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AcGFydG5lcjE0LmNvbSIsInJvbGVzIjpbIlBBUlRORVIiXSwiY3JlYXRlZEF0IjoiMjAyNC0wNy0xM1QxODoyNjo1MS4zNTlaIiwidXBkYXRlZEF0IjoiMjAyNC0wNy0xM1QxODoyNjo1MS4zNTlaIiwiaWF0IjoxNzIwODk1Mzg5LCJleHAiOjE3MjA5MDUzODl9.qHHH_JDy3E_1utb45noShFYRTwo7LUOFkCwrja0GvAM
 
 ### Edição de Evento:
-PUT http://localhost:3000/events/{{ eventId }}
+PUT {{baseUrl}}/events/{{ eventId }}
 Content-Type: application/json
 x-api-token: 777
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJzb2ZpYSBEb2UiLCJlbWFpbCI6InNhZGFAdGVzdC5jb20iLCJyb2xlcyI6WyJQQVJUTkVSIl0sImNyZWF0ZWRBdCI6IjIwMjQtMDYtMjFUMjM6NDI6MjMuNTYxWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDYtMjFUMjM6NDI6MjMuNTYxWiIsImlhdCI6MTcxOTAxMzM5NSwiZXhwIjoxNzE5MDIzMzk1fQ.pESofgheL_hSyEjg-ypy50MpXcjX4z4ZIHzX1MKZJyM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AcGFydG5lcjE0LmNvbSIsInJvbGVzIjpbIlBBUlRORVIiXSwiY3JlYXRlZEF0IjoiMjAyNC0wNy0xM1QxODoyNjo1MS4zNTlaIiwidXBkYXRlZEF0IjoiMjAyNC0wNy0xM1QxODoyNjo1MS4zNTlaIiwiaWF0IjoxNzIwODk1Mzg5LCJleHAiOjE3MjA5MDUzODl9.qHHH_JDy3E_1utb45noShFYRTwo7LUOFkCwrja0GvAM
 
 {
     "name": "Evento da nanda - 66 Evento da nanda - 66Evento da nanda - 66Evento da nanda - 66Evento da nanda -  ",
@@ -94,40 +97,42 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiO
     "partnerId": 1
 }
 
-### Remoção de Evento:
-DELETE http://localhost:3000/events/{{ eventId }}
-Content-Type: application/json
-x-api-token: 777
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJzb2ZpYSBEb2UiLCJlbWFpbCI6InNhZGFAdGVzdC5jb20iLCJyb2xlcyI6WyJQQVJUTkVSIl0sImNyZWF0ZWRBdCI6IjIwMjQtMDYtMjFUMjM6NDI6MjMuNTYxWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDYtMjFUMjM6NDI6MjMuNTYxWiIsImlhdCI6MTcxOTAxMzM5NSwiZXhwIjoxNzE5MDIzMzk1fQ.pESofgheL_hSyEjg-ypy50MpXcjX4z4ZIHzX1MKZJyM
-
-### Listagem de Todos os Spots do Evento:
-GET http://localhost:3000/events/{{ eventId }}/spots
-x-api-token: 777
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJzb2ZpYSBEb2UiLCJlbWFpbCI6InNhZGFAdGVzdC5jb20iLCJyb2xlcyI6WyJQQVJUTkVSIl0sImNyZWF0ZWRBdCI6IjIwMjQtMDYtMjFUMjM6NDI6MjMuNTYxWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDYtMjFUMjM6NDI6MjMuNTYxWiIsImlhdCI6MTcxOTAxMzM5NSwiZXhwIjoxNzE5MDIzMzk1fQ.pESofgheL_hSyEjg-ypy50MpXcjX4z4ZIHzX1MKZJyM
-
 ### Criação de Spot do Evento:
 # @name createSpot
-POST http://localhost:3000/events/{{ eventId }}/spots
+POST {{baseUrl}}/events/{{ eventId }}/spots
 Content-Type: application/json
 x-api-token: 777
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJzb2ZpYSBEb2UiLCJlbWFpbCI6InNhZGFAdGVzdC5jb20iLCJyb2xlcyI6WyJQQVJUTkVSIl0sImNyZWF0ZWRBdCI6IjIwMjQtMDYtMjFUMjM6NDI6MjMuNTYxWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDYtMjFUMjM6NDI6MjMuNTYxWiIsImlhdCI6MTcxOTAxMzM5NSwiZXhwIjoxNzE5MDIzMzk1fQ.pESofgheL_hSyEjg-ypy50MpXcjX4z4ZIHzX1MKZJyM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AcGFydG5lcjE0LmNvbSIsInJvbGVzIjpbIlBBUlRORVIiXSwiY3JlYXRlZEF0IjoiMjAyNC0wNy0xM1QxODoyNjo1MS4zNTlaIiwidXBkYXRlZEF0IjoiMjAyNC0wNy0xM1QxODoyNjo1MS4zNTlaIiwiaWF0IjoxNzIwODk1Mzg5LCJleHAiOjE3MjA5MDUzODl9.qHHH_JDy3E_1utb45noShFYRTwo7LUOFkCwrja0GvAM
 
 {
-    "name": "A3"
+    "name": "A4"
 }
+
+
+### Listagem de Todos os Spots do Evento:
+GET {{baseUrl}}/events/{{ eventId }}/spots
+x-api-token: 777
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW4tcGFydG5lcjFAYWRtaW4uY29tIiwicm9sZXMiOlsiUEFSVE5FUiJdLCJjcmVhdGVkQXQiOiIyMDI0LTA3LTEzVDE4OjM4OjIwLjU0N1oiLCJ1cGRhdGVkQXQiOiIyMDI0LTA3LTEzVDE4OjM4OjIwLjU0N1oiLCJpYXQiOjE3MjA4OTU5NDMsImV4cCI6MTcyMDkwNTk0M30.q8qZTwzcScyiKuQfB0CevAfkEB7G-Gu8NbEDIgz8CXw
+
 
 ### // Recebe id evento após criado
 
 @spotName = {{ createSpot.response.body.name }}
 
 ### Reserva de Evento:
-POST http://localhost:3000/events/{{ eventId }}/reserve
+POST {{baseUrl}}/events/{{ eventId }}/reserve
 Content-Type: application/json
 x-api-token: 777
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJzb2ZpYSBEb2UiLCJlbWFpbCI6InNhZGFAdGVzdC5jb20iLCJyb2xlcyI6WyJQQVJUTkVSIl0sImNyZWF0ZWRBdCI6IjIwMjQtMDYtMjFUMjM6NDI6MjMuNTYxWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDYtMjFUMjM6NDI6MjMuNTYxWiIsImlhdCI6MTcxOTAxMzM5NSwiZXhwIjoxNzE5MDIzMzk1fQ.pESofgheL_hSyEjg-ypy50MpXcjX4z4ZIHzX1MKZJyM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AcGFydG5lcjE0LmNvbSIsInJvbGVzIjpbIlBBUlRORVIiXSwiY3JlYXRlZEF0IjoiMjAyNC0wNy0xM1QxODoyNjo1MS4zNTlaIiwidXBkYXRlZEF0IjoiMjAyNC0wNy0xM1QxODoyNjo1MS4zNTlaIiwiaWF0IjoxNzIwODk1Mzg5LCJleHAiOjE3MjA5MDUzODl9.qHHH_JDy3E_1utb45noShFYRTwo7LUOFkCwrja0GvAM
 
 {
     "spots": ["{{ spotName }}"],
     "ticket_kind": "full",
     "email": "test@test.com"
 }
+
+### Remoção de Evento:
+DELETE {{baseUrl}}/events/{{ eventId }}
+Content-Type: application/json
+x-api-token: 777
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6InNvZmlhIERvZSIsImVtYWlsIjoic2FkYUB0ZXN0LmNvbSIsInJvbGVzIjpbIlBBUlRORVIiXSwiY3JlYXRlZEF0IjoiMjAyNC0wNy0xM1QxNTozMjo0NS4wODhaIiwidXBkYXRlZEF0IjoiMjAyNC0wNy0xM1QxNTozMjo0NS4wODhaIiwiaWF0IjoxNzIwODg0NzY2LCJleHAiOjE3MjA4OTQ3NjZ9.qbo2xsqo3sOhF5zIbCJi66fU33e8S-uy8I8rKn29618

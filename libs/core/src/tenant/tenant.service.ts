@@ -1,9 +1,13 @@
-import { Injectable, Scope } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Partner } from '@prisma/client';
+
+/* 
 
 @Injectable({
     scope: Scope.REQUEST
 })
+ */
+@Injectable()
 export class TenantService {
     private tenant: Partner
 

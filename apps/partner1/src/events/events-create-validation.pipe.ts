@@ -10,6 +10,8 @@ export class EventsCreateValidationPipe implements PipeTransform {
     async transform(value: CreateEventRequest, metadata: ArgumentMetadata) {
         const object = plainToClass(CreateEventRequest, value);
 
+        console.log('EventsCreateValidationPipe -> transform -> value', value)
+
         const errors = await validate(object);
 
         if (errors.length > 0) {

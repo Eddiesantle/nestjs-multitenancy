@@ -62,6 +62,11 @@ export class SpotsService {
   }
 
   remove(eventId: string, spotId: string,) {
-    return `This action removes a #${spotId} spot`;
+    return this.prismaService.spot.delete({
+      where: {
+        id: spotId,
+        eventId,
+      },
+    });
   }
 }

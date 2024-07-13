@@ -1,8 +1,10 @@
 
-import { EventsService, TenantInterceptor } from '@app/core';
+
 import { AuthGuard } from '@app/core/auth/auth.guard';
 import { Roles } from '@app/core/auth/roles/roles.decorator';
 import { RolesGuard } from '@app/core/auth/roles/roles.guard';
+import { EventsService } from '@app/core/events/events.service';
+import { TenantInterceptor } from '@app/core/tenant/tenant.interceptor';
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards, UseInterceptors } from '@nestjs/common';
 import { UserRoles } from '../auth/users/user-roles';
 import { EventsCreateValidationPipe } from './events-create-validation.pipe';

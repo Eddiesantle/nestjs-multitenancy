@@ -8,12 +8,18 @@ import { ReserveSpotDto } from './dto/reserve-spot.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
 
 @Injectable()
-
 export class EventsService {
 
   constructor(private prismaService: PrismaService, private tenantService: TenantService) { }
 
-  create(createEventDto: CreateEventDto) {
+  create(createEventDto: CreateEventDto & { partnerId?: number }) {
+
+
+    console.log('EventsService -> create -> createEventDto', createEventDto)
+
+    const tenant = this.tenantService.getTenant();
+    console.log('EventsService -> create -> tenant.id', tenant?.id)
+
 
     return this.prismaService.event.create({
       data: {
@@ -21,7 +27,7 @@ export class EventsService {
         description: createEventDto.description,
         date: new Date(createEventDto.date),
         price: createEventDto.price,
-        partnerId: this.tenantService.getTenant().id
+        partnerId: tenant?.id || createEventDto?.partnerId,
       }
     })
   }
@@ -62,6 +68,7 @@ export class EventsService {
   }
 
   remove(id: string) {
+
     return this.prismaService.event.delete({
       where: {
         partnerId: this.tenantService.getTenant().id,

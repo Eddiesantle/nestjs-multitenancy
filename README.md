@@ -40,10 +40,10 @@ cd nestjs-multitenancy
 docker compose up -d
 ```
 
-3. Execute o container da aplicação 'app' interagir diretamente com o ambiente interno de um contêiner:
+3. Execute o container da aplicação 'app-nestjs' interagir diretamente com o ambiente interno de um contêiner:
 
 ```bash
-docker compose exec app bash
+docker compose exec app-nestjs bash
 ```
 
 4. Execute as migrações do partner1 e partner2:
@@ -56,13 +56,19 @@ npm run migrate:partner1
 npm run migrate:partner2
 ```
 
-5. Para executar aplicação partner1 - roda na porta 3000:
+5. Inicie os serviços para parceiros partner1 e partner2:
+```bash
+npm run start partner1-fixture
+npm run start partner2-fixture
+```
+
+6. Para executar aplicação partner1 - roda na porta 3000:
 
 ```bash
 npm run start:partner1
 ```
 
-6. Para executar aplicação partner2 - roda na porta 3000:
+7. Para executar aplicação partner2 - roda na porta 3000:
 
 ```bash
 npm run start:partner2
