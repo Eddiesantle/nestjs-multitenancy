@@ -55,6 +55,9 @@ export class EventsController {
 
   @Post(':id/reserve')
   reserveSpots(@Body(new EventsReserveValidationPipe()) reserveRequest: ReserveSpotRequest, @Param('id') eventId: string) {
+
+    console.log('reserveSpots -> reserveRequest', reserveRequest)
+
     return this.eventsService.reserveSpot({ ...reserveRequest, eventId })
   }
 }

@@ -20,7 +20,7 @@ export async function fixture(
   await prismaService.ticket.deleteMany({});
   await prismaService.spot.deleteMany({});
   await prismaService.event.deleteMany({});
-  await prismaService.partner.deleteMany({});
+  // await prismaService.partner.deleteMany({});
 
 
   const usersService = app.get(UsersService);

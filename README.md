@@ -110,7 +110,7 @@ docker compose up
 Acessar container do banco de dados
 
 ```
-docker compose exec db bash
+docker compose exec db-mysql bash
 ```
 
 Acessar mysql
