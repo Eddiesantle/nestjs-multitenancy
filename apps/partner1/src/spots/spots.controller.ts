@@ -1,12 +1,11 @@
 
 
 import { SpotsService } from '@app/core';
-import { AuthGuard } from '@app/core/auth/auth.guard';
-import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { CreateSpotRequest } from './request/create-spot.request';
 import { UpdateSpotRequest } from './request/update-spot.request';
 
-@UseGuards(AuthGuard)
+// @UseGuards(AuthGuard)
 @Controller('events/:eventId/spots')
 export class SpotsController {
   constructor(private readonly spotsService: SpotsService) { }

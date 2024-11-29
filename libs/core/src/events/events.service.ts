@@ -2,7 +2,6 @@
 import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { Prisma, SpotStatus, TicketStatus } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
-import { TenantService } from '../tenant/tenant.service';
 import { CreateEventDto } from './dto/create-event.dto';
 import { ReserveSpotDto } from './dto/reserve-spot.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
@@ -10,15 +9,12 @@ import { UpdateEventDto } from './dto/update-event.dto';
 @Injectable()
 export class EventsService {
 
-  constructor(private prismaService: PrismaService, private tenantService: TenantService) { }
+  constructor(private prismaService: PrismaService /*, private tenantService: TenantService*/) { }
 
   create(createEventDto: CreateEventDto & { partnerId?: number }) {
 
 
-    console.log('EventsService -> create -> createEventDto', createEventDto)
-
-    const tenant = this.tenantService.getTenant();
-    console.log('EventsService -> create -> tenant.id', tenant?.id)
+    const tenant = { id: 1 }
 
 
     return this.prismaService.event.create({
@@ -33,18 +29,22 @@ export class EventsService {
   }
 
   findAll() {
+    const tenant = { id: 1 }
+
     return this.prismaService.event.findMany({
       where: {
-        partnerId: this.tenantService.getTenant().id
+        partnerId: tenant?.id
       }
     })
 
   }
 
   findOne(id: string) {
+    const tenant = { id: 1 }
+
     return this.prismaService.event.findUnique({
       where: {
-        partnerId: this.tenantService.getTenant().id,
+        partnerId: tenant?.id,
         id
       }
     })
@@ -52,6 +52,8 @@ export class EventsService {
   }
 
   update(id: string, updateEventDto: UpdateEventDto) {
+    const tenant = { id: 1 }
+
     return this.prismaService.event.update({
       data: {
         name: updateEventDto.name,
@@ -60,7 +62,7 @@ export class EventsService {
         price: updateEventDto.price
       },
       where: {
-        partnerId: this.tenantService.getTenant().id,
+        partnerId: tenant?.id,
         id
       }
     })
@@ -69,9 +71,11 @@ export class EventsService {
 
   remove(id: string) {
 
+    const tenant = { id: 1 }
+
     return this.prismaService.event.delete({
       where: {
-        partnerId: this.tenantService.getTenant().id,
+        partnerId: tenant?.id,
         id
       }
     })
@@ -79,6 +83,11 @@ export class EventsService {
   }
 
   async reserveSpot(dto: ReserveSpotDto & { eventId: string }) {
+
+    console.log("reserveSpot -> ", dto)
+
+    return false
+
     // Consultar se lugares existem
     const spots = await this.prismaService.spot.findMany({
       where: {
